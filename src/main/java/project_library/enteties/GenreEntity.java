@@ -13,13 +13,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class GenreEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String genre;
+	@NotNull(message = "Name of genre must be provided")
+	private String nameOFGenre;
 
 	@OneToMany(mappedBy = "genre", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JsonIgnore
@@ -29,10 +31,10 @@ public class GenreEntity {
 		super();
 	}
 
-	public GenreEntity(Integer id, String genre, List<BookEntity> books) {
+	public GenreEntity(Integer id, String nameOFGenre, List<BookEntity> books) {
 		super();
 		this.id = id;
-		this.genre = genre;
+		this.nameOFGenre = nameOFGenre;
 		this.books = books;
 	}
 
@@ -44,12 +46,12 @@ public class GenreEntity {
 		this.id = id;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getNameOFGenre() {
+		return nameOFGenre;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setNameOFGenre(String nameOFGenre) {
+		this.nameOFGenre = nameOFGenre;
 	}
 
 	public List<BookEntity> getBooks() {

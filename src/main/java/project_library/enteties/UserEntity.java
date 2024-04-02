@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -15,19 +17,46 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@NotNull(message = "Name must be provided")
+	@Size(min = 2, max = 20, message = "Name must be between {min} and {max} characters long")
 	private String name;
+	@NotNull(message = "Lastname must be provided")
+	@Size(min = 2, max = 20, message = "Lastname must be between {min} and {max} characters long")
 	private String lastname;
+	@NotNull(message = "Username must be provided")
+	@Size(min = 6, max = 15, message = "Username must be between {min} and {max} characters long")
 	private String username;
+	@NotNull(message = "Email must be provided")
+	@Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
+	message = "Email is not valid")
 	private String email;
+	@NotNull(message = "Password must be provided")
+	@Size(min = 8, max = 20, message = "Password must be between {min} and {max} characters long")
 	private String password;
+	@JsonFormat(
+			shape = JsonFormat.Shape.STRING,
+			pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
+	@NotNull(message = "Personal ID must be provided")
+	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
+	private Integer personalID;
+	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
+	private Long phoneNumber;
+	@NotNull(message = "User number must be provided")
+	@Size(min =  8, max = 8, message = "User number must contain exactly 8 characters")
 	private String userNumber;
+	@Version
 	private Integer version;
 
 	private RoleUser userRole;
@@ -45,8 +74,8 @@ public class UserEntity {
 	}
 
 	public UserEntity(Integer id, String name, String lastname, String username, String email, String password,
-			LocalDate dateOfBirth, String userNumber, Integer version, RoleUser userRole, AddressEntity address,
-			List<BookEntity> books) {
+			LocalDate dateOfBirth, Integer personalID, Long phoneNumber, String userNumber, Integer version,
+			RoleUser userRole, AddressEntity address, List<BookEntity> books) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -55,6 +84,8 @@ public class UserEntity {
 		this.email = email;
 		this.password = password;
 		this.dateOfBirth = dateOfBirth;
+		this.personalID = personalID;
+		this.phoneNumber = phoneNumber;
 		this.userNumber = userNumber;
 		this.version = version;
 		this.userRole = userRole;
@@ -116,6 +147,22 @@ public class UserEntity {
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Integer getPersonalID() {
+		return personalID;
+	}
+
+	public void setPersonalID(Integer personalID) {
+		this.personalID = personalID;
+	}
+
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getUserNumber() {

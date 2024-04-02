@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -20,8 +21,11 @@ public class AddressEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@NotNull(message = "Name of street must be provided")
 	private String street;
+	@NotNull(message = "Name of city must be provided")
 	private String city;
+	@NotNull(message = "Name of country must be provided")
 	private String country;
 
 	@OneToMany(mappedBy = "address", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
