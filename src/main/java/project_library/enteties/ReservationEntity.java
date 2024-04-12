@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,6 +15,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -21,8 +24,15 @@ public class ReservationEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@NotNull(message = "Date of issue must be provided")
+	@JsonFormat(shape = JsonFormat.Shape.STRING,
+			pattern = "dd-MM-yyyy")
 	private LocalDate dateOfIssue;
-	private Integer numberOfDaysRetenetionTheBook;
+	@NotNull(message = "Number of reservation days must be provided")
+	@Min(value = 1, message = "Number of reservation days must be at least 1")
+	private Integer numberOfReservationDays;
+	@JsonFormat(shape = JsonFormat.Shape.STRING,
+			pattern = "dd-MM-yyyy")
 	private LocalDate returnDate;
 
 	@OneToMany(mappedBy = "reservation", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
@@ -33,12 +43,12 @@ public class ReservationEntity {
 		super();
 	}
 
-	public ReservationEntity(Integer id, LocalDate dateOfIssue, Integer numberOfDaysRetenetionTheBook,
-			LocalDate returnDate, List<BookEntity> books) {
+	public ReservationEntity(Integer id, LocalDate dateOfIssue, Integer numberOfReservationDays, LocalDate returnDate,
+			List<BookEntity> books) {
 		super();
 		this.id = id;
 		this.dateOfIssue = dateOfIssue;
-		this.numberOfDaysRetenetionTheBook = numberOfDaysRetenetionTheBook;
+		this.numberOfReservationDays = numberOfReservationDays;
 		this.returnDate = returnDate;
 		this.books = books;
 	}
@@ -59,12 +69,12 @@ public class ReservationEntity {
 		this.dateOfIssue = dateOfIssue;
 	}
 
-	public Integer getNumberOfDaysRetenetionTheBook() {
-		return numberOfDaysRetenetionTheBook;
+	public Integer getNumberOfReservationDays() {
+		return numberOfReservationDays;
 	}
 
-	public void setNumberOfDaysRetenetionTheBook(Integer numberOfDaysRetenetionTheBook) {
-		this.numberOfDaysRetenetionTheBook = numberOfDaysRetenetionTheBook;
+	public void setNumberOfReservationDays(Integer numberOfReservationDays) {
+		this.numberOfReservationDays = numberOfReservationDays;
 	}
 
 	public LocalDate getReturnDate() {

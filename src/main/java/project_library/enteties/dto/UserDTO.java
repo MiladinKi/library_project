@@ -1,4 +1,4 @@
-package project_library.enteties;
+package project_library.enteties.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -6,28 +6,21 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Version;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import project_library.enteties.BookEntity;
+import project_library.enteties.RoleUser;
 
-@Entity
-public class UserEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+
+public class UserDTO {
 	@NotNull(message = "Name must be provided")
 	@Size(min = 2, max = 20, message = "Name must be between {min} and {max} characters long")
 	private String name;
@@ -44,6 +37,9 @@ public class UserEntity {
 	@NotNull(message = "Password must be provided")
 	@Size(min = 8, max = 20, message = "Password must be between {min} and {max} characters long")
 	private String password;
+	@NotNull(message = "Confirmed password must be provided")
+	@Size(min = 8, max = 20, message = "Confirmed password must be between {min} and {max} characters long")
+	private String confirmPassword;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
 	@NotNull(message = "Personal ID must be provided")
@@ -69,36 +65,38 @@ public class UserEntity {
 	@JsonIgnore
 	private List<BookEntity> books = new ArrayList<>();
 
-	public UserEntity() {
+	public UserDTO(
+			@NotNull(message = "Name must be provided") @Size(min = 2, max = 20, message = "Name must be between {min} and {max} characters long") String name,
+			@NotNull(message = "Lastname must be provided") @Size(min = 2, max = 20, message = "Lastname must be between {min} and {max} characters long") String lastname,
+			@NotNull(message = "Username must be provided") @Size(min = 6, max = 15, message = "Username must be between {min} and {max} characters long") String username,
+			@NotNull(message = "Email must be provided") @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Email is not valid") String email,
+			@NotNull(message = "Password must be provided") @Size(min = 8, max = 20, message = "Password must be between {min} and {max} characters long") String password,
+			@NotNull(message = "Confirmed password must be provided") @Size(min = 8, max = 20, message = "Confirmed password must be between {min} and {max} characters long") String confirmPassword,
+			LocalDate dateOfBirth,
+			@NotNull(message = "Personal ID must be provided") @Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits") Integer personalID,
+			@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits") Long phoneNumber,
+			@NotNull(message = "User number must be provided") @Size(min = 8, max = 8, message = "User number must contain exactly 8 characters") String userNumber,
+			@NotNull(message = "Name of street must be provided") String street,
+			@NotNull(message = "Name of city must be provided") String city,
+			@NotNull(message = "Name of country must be provided") String country, Integer version, RoleUser userRole,
+			List<BookEntity> books) {
 		super();
-	}
-
-	public UserEntity(Integer id, String name, String lastname, String username, String email, String password,
-			LocalDate dateOfBirth, Integer personalID, Long phoneNumber, String userNumber, Integer version,
-			RoleUser userRole, List<BookEntity> books) {
-		super();
-		this.id = id;
 		this.name = name;
 		this.lastname = lastname;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.confirmPassword = confirmPassword;
 		this.dateOfBirth = dateOfBirth;
 		this.personalID = personalID;
 		this.phoneNumber = phoneNumber;
 		this.userNumber = userNumber;
+		this.street = street;
+		this.city = city;
+		this.country = country;
 		this.version = version;
 		this.userRole = userRole;
-
 		this.books = books;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -141,6 +139,14 @@ public class UserEntity {
 		this.password = password;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -173,6 +179,30 @@ public class UserEntity {
 		this.userNumber = userNumber;
 	}
 
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	public Integer getVersion() {
 		return version;
 	}
@@ -197,28 +227,6 @@ public class UserEntity {
 		this.books = books;
 	}
 
-	public String getStreet() {
-		return street;
-	}
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
 
 }
