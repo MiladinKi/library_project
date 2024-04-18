@@ -1272,3 +1272,72 @@ Unconditional classes:
 2024-04-18T18:37:03.282+02:00  INFO 22740 --- [library_project] [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-18T18:37:03.283+02:00  INFO 22740 --- [library_project] [RMI TCP Connection(6)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-4 - Shutdown initiated...
 2024-04-18T18:37:03.291+02:00  INFO 22740 --- [library_project] [RMI TCP Connection(6)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-4 - Shutdown completed.
+2024-04-18T18:37:06.822+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Starting LibraryProjectApplication using Java 17.0.7 with PID 24828 (D:\Programiranje\sts\library_project\target\classes started by Kovacevic in D:\Programiranje\sts\library_project)
+2024-04-18T18:37:06.848+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : No active profile set, falling back to 1 default profile: "default"
+2024-04-18T18:37:06.932+02:00  INFO 24828 --- [library_project] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-18T18:37:06.933+02:00  INFO 24828 --- [library_project] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-18T18:37:08.004+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18T18:37:08.101+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+2024-04-18T18:37:08.911+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port 8080 (http)
+2024-04-18T18:37:08.934+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2024-04-18T18:37:08.935+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-18T18:37:09.029+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2024-04-18T18:37:09.030+02:00  INFO 24828 --- [library_project] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2096 ms
+2024-04-18T18:37:09.749+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-18T18:37:09.819+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2024-04-18T18:37:10.389+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.p.HikariPool                       : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@210980a7
+2024-04-18T18:37:10.392+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2024-04-18T18:37:12.373+02:00  INFO 24828 --- [library_project] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18T18:37:12.842+02:00  WARN 24828 --- [library_project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-18T18:37:13.622+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-18T18:37:13.708+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port 8080 (http) with context path ''
+2024-04-18T18:37:13.736+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Started LibraryProjectApplication in 7.643 seconds (process running for 9.149)
+2024-04-18T18:37:35.635+02:00  INFO 24828 --- [library_project] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-18T18:37:35.672+02:00  INFO 24828 --- [library_project] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18T18:37:35.680+02:00  INFO 24828 --- [library_project] [Thread-5] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2024-04-18T18:37:35.701+02:00  INFO 24828 --- [library_project] [Thread-5] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2024-04-18T18:37:35.854+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Starting LibraryProjectApplication using Java 17.0.7 with PID 24828 (D:\Programiranje\sts\library_project\target\classes started by Kovacevic in D:\Programiranje\sts\library_project)
+2024-04-18T18:37:35.855+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : No active profile set, falling back to 1 default profile: "default"
+2024-04-18T18:37:36.091+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18T18:37:36.114+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 5 JPA repository interfaces.
+2024-04-18T18:37:36.254+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port 8080 (http)
+2024-04-18T18:37:36.255+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2024-04-18T18:37:36.257+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-18T18:37:36.293+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2024-04-18T18:37:36.293+02:00  INFO 24828 --- [library_project] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 435 ms
+2024-04-18T18:37:36.359+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-18T18:37:36.361+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-2 - Starting...
+2024-04-18T18:37:36.384+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.p.HikariPool                       : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c69b5df
+2024-04-18T18:37:36.385+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-2 - Start completed.
+2024-04-18T18:37:36.638+02:00  INFO 24828 --- [library_project] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18T18:37:36.783+02:00  WARN 24828 --- [library_project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-18T18:37:37.004+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-18T18:37:37.023+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port 8080 (http) with context path ''
+2024-04-18T18:37:37.032+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Started LibraryProjectApplication in 1.259 seconds (process running for 32.445)
+2024-04-18T18:37:37.034+02:00  INFO 24828 --- [library_project] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-18T18:38:04.224+02:00  INFO 24828 --- [library_project] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-04-18T18:38:04.254+02:00  INFO 24828 --- [library_project] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18T18:38:04.255+02:00  INFO 24828 --- [library_project] [Thread-7] c.z.h.HikariDataSource                   : HikariPool-2 - Shutdown initiated...
+2024-04-18T18:38:04.269+02:00  INFO 24828 --- [library_project] [Thread-7] c.z.h.HikariDataSource                   : HikariPool-2 - Shutdown completed.
+2024-04-18T18:38:04.504+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Starting LibraryProjectApplication using Java 17.0.7 with PID 24828 (D:\Programiranje\sts\library_project\target\classes started by Kovacevic in D:\Programiranje\sts\library_project)
+2024-04-18T18:38:04.505+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : No active profile set, falling back to 1 default profile: "default"
+2024-04-18T18:38:04.926+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18T18:38:04.956+02:00  INFO 24828 --- [library_project] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 5 JPA repository interfaces.
+2024-04-18T18:38:05.202+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port 8080 (http)
+2024-04-18T18:38:05.205+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2024-04-18T18:38:05.206+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-18T18:38:05.257+02:00  INFO 24828 --- [library_project] [restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2024-04-18T18:38:05.258+02:00  INFO 24828 --- [library_project] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 749 ms
+2024-04-18T18:38:05.338+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-18T18:38:05.340+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-3 - Starting...
+2024-04-18T18:38:05.370+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.p.HikariPool                       : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f6d12f2
+2024-04-18T18:38:05.370+02:00  INFO 24828 --- [library_project] [restartedMain] c.z.h.HikariDataSource                   : HikariPool-3 - Start completed.
+2024-04-18T18:38:05.726+02:00  INFO 24828 --- [library_project] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18T18:38:05.883+02:00  WARN 24828 --- [library_project] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-18T18:38:06.171+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-18T18:38:06.199+02:00  INFO 24828 --- [library_project] [restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port 8080 (http) with context path ''
+2024-04-18T18:38:06.211+02:00  INFO 24828 --- [library_project] [restartedMain] p.LibraryProjectApplication              : Started LibraryProjectApplication in 1.854 seconds (process running for 61.624)
+2024-04-18T18:38:06.214+02:00  INFO 24828 --- [library_project] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-04-18T18:39:39.479+02:00  INFO 24828 --- [library_project] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-18T18:39:39.482+02:00  INFO 24828 --- [library_project] [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2024-04-18T18:39:39.486+02:00  INFO 24828 --- [library_project] [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
