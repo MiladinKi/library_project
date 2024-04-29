@@ -6,9 +6,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class UserEntity {
 	@NotNull(message = "Lastname must be provided")
 	@Size(min = 2, max = 20, message = "Lastname must be between {min} and {max} characters long")
 	private String lastname;
+	@Column(unique = true)
 	@NotNull(message = "Username must be provided")
 	@Size(min = 6, max = 15, message = "Username must be between {min} and {max} characters long")
 	private String username;
@@ -46,11 +49,14 @@ public class UserEntity {
 	private String password;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
+	@Column(unique = true)
 	@NotNull(message = "Personal ID must be provided")
 	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
 	private Integer personalID;
+	@Column(unique = true)
 	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
 	private Long phoneNumber;
+	@Column(unique = true)
 	@NotNull(message = "User number must be provided")
 	@Size(min = 8, max = 8, message = "User number must contain exactly 8 characters")
 	private String userNumber;
@@ -66,7 +72,7 @@ public class UserEntity {
 	private RoleUser userRole;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonManagedReference
 	private List<BookEntity> books = new ArrayList<>();
 
 	public UserEntity() {

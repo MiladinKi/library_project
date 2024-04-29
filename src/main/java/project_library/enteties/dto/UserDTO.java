@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
@@ -42,11 +43,14 @@ public class UserDTO {
 	private String confirmPassword;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
+	@Column(unique = true)
 	@NotNull(message = "Personal ID must be provided")
 	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
 	private Integer personalID;
+	@Column(unique = true)
 	@Digits(integer = 10, fraction = 0, message = "Personal ID must have exactly 10 digits")
 	private Long phoneNumber;
+	@Column(unique = true)
 	@NotNull(message = "User number must be provided")
 	@Size(min = 8, max = 8, message = "User number must contain exactly 8 characters")
 	private String userNumber;
@@ -64,6 +68,12 @@ public class UserDTO {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<BookEntity> books = new ArrayList<>();
+	
+	
+
+	public UserDTO() {
+		super();
+	}
 
 	public UserDTO(
 			@NotNull(message = "Name must be provided") @Size(min = 2, max = 20, message = "Name must be between {min} and {max} characters long") String name,
@@ -154,6 +164,7 @@ public class UserDTO {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
 
 	public Integer getPersonalID() {
 		return personalID;
