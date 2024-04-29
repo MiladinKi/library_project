@@ -6,8 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -35,8 +38,7 @@ public class BookEntity {
 	private Integer id;
 	@NotNull(message = "Name of book must be provided")
 	private String name;
-	@JsonFormat(shape =  JsonFormat.Shape.STRING,
-			pattern = "yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	private LocalDate yearOfPublication;
 	@NotNull(message = "Serial number must be provided")
 	@Size(min = 5, max = 10, message = "Serial number must be between {min} and {max} characters long")
@@ -47,23 +49,23 @@ public class BookEntity {
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "genre")
+	@JsonBackReference
 	private GenreEntity genre;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinTable(name = "Writer_Book", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "writer_id") })
-	protected Set<WriterEntity> writers = new HashSet<WriterEntity>();
-
-//	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "writer")
-//	private WriterEntity writer;
+	@JsonIgnore
+	protected List<WriterEntity> writers = new ArrayList<WriterEntity>();
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")
+//	@JsonBackReference
 	private UserEntity user;
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "reservation")
+//	@JsonBackReference
 	private ReservationEntity reservation;
 
 	public BookEntity() {
@@ -71,7 +73,7 @@ public class BookEntity {
 	}
 
 	public BookEntity(Integer id, String name, LocalDate yearOfPublication, String serialNumber, Integer numberOfCopies,
-			GenreEntity genre, Set<WriterEntity> writers, UserEntity user, ReservationEntity reservation) {
+			GenreEntity genre, List<WriterEntity> writers, UserEntity user, ReservationEntity reservation) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -124,11 +126,11 @@ public class BookEntity {
 		this.genre = genre;
 	}
 
-	public Set<WriterEntity> getWriters() {
+	public List<WriterEntity> getWriters() {
 		return writers;
 	}
 
-	public void setWriters(Set<WriterEntity> writers) {
+	public void setWriters(List<WriterEntity> writers) {
 		this.writers = writers;
 	}
 

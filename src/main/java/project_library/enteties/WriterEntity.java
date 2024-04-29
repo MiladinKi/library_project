@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -41,11 +42,8 @@ public class WriterEntity {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinTable(name = "Writer_Book", joinColumns = { @JoinColumn(name = "writer_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "book_id") })
+	@JsonManagedReference
 	protected Set<BookEntity> books = new HashSet<BookEntity>();
-
-//	@OneToMany(mappedBy = "writer", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-//	@JsonIgnore
-//	private List<BookEntity> books = new ArrayList<>();
 
 	public WriterEntity() {
 		super();

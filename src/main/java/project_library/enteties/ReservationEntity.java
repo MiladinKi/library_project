@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -36,7 +37,7 @@ public class ReservationEntity {
 	private LocalDate returnDate;
 
 	@OneToMany(mappedBy = "reservation", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JsonIgnore
+//	@JsonManagedReference
 	private List<BookEntity> books = new ArrayList<>();
 
 	public ReservationEntity() {
