@@ -47,6 +47,8 @@ public class BookEntity {
 	@Min(value = 1, message = "Number of copies must be at least 1")
 	private Integer numberOfCopies;
 
+	private Integer issueBook;
+
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "genre")
 	@JsonBackReference
@@ -60,26 +62,31 @@ public class BookEntity {
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")
-//	@JsonBackReference
+	@JsonBackReference
 	private UserEntity user;
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "reservation")
-//	@JsonBackReference
-	private ReservationEntity reservation;
+	@JsonBackReference
+	private IssueEntity reservation;
 
 	public BookEntity() {
 		super();
 	}
 
-	public BookEntity(Integer id, String name, LocalDate yearOfPublication, String serialNumber, Integer numberOfCopies,
-			GenreEntity genre, List<WriterEntity> writers, UserEntity user, ReservationEntity reservation) {
+	public BookEntity(Integer id, @NotNull(message = "Name of book must be provided") String name,
+			LocalDate yearOfPublication,
+			@NotNull(message = "Serial number must be provided") @Size(min = 5, max = 10, message = "Serial number must be between {min} and {max} characters long") String serialNumber,
+			@NotNull(message = "Must have a number of copies") @Min(value = 1, message = "Number of copies must be at least 1") Integer numberOfCopies,
+			Integer issueBook, GenreEntity genre, List<WriterEntity> writers, UserEntity user,
+			IssueEntity reservation) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.yearOfPublication = yearOfPublication;
 		this.serialNumber = serialNumber;
 		this.numberOfCopies = numberOfCopies;
+		this.issueBook = issueBook;
 		this.genre = genre;
 		this.writers = writers;
 		this.user = user;
@@ -118,6 +125,14 @@ public class BookEntity {
 		this.numberOfCopies = numberOfCopies;
 	}
 
+	public Integer getIssueBook() {
+		return issueBook;
+	}
+
+	public void setIssueBook(Integer issueBook) {
+		this.issueBook = issueBook;
+	}
+
 	public GenreEntity getGenre() {
 		return genre;
 	}
@@ -142,11 +157,11 @@ public class BookEntity {
 		this.user = user;
 	}
 
-	public ReservationEntity getReservation() {
+	public IssueEntity getReservation() {
 		return reservation;
 	}
 
-	public void setReservation(ReservationEntity reservation) {
+	public void setReservation(IssueEntity reservation) {
 		this.reservation = reservation;
 	}
 

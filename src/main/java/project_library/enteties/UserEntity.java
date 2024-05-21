@@ -72,8 +72,12 @@ public class UserEntity {
 	private RoleUser userRole;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-//	@JsonManagedReference
+	@JsonIgnore
 	private List<BookEntity> books = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<IssueEntity> issues = new ArrayList<>();
 
 	public UserEntity() {
 		super();
@@ -225,6 +229,14 @@ public class UserEntity {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public List<IssueEntity> getIssues() {
+		return issues;
+	}
+
+	public void setIssues(List<IssueEntity> issues) {
+		this.issues = issues;
 	}
 
 }
